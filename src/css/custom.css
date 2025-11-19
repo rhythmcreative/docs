@@ -1,0 +1,456 @@
+/**
+ * Soft & Airy Design System
+ * Aesthetic: Modern SaaS, Clean, Pastel, Rounded (Linear/Raycast style)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Typography */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', monospace;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.6;
+
+  /* Light Mode - Soft & Airy */
+  --ifm-color-primary: #5E6AD2;
+  /* Soft Indigo */
+  --ifm-color-primary-dark: #4b55a8;
+  --ifm-color-primary-darker: #424b94;
+  --ifm-color-primary-darkest: #363d7a;
+  --ifm-color-primary-light: #7e88db;
+  --ifm-color-primary-lighter: #8e97e0;
+  --ifm-color-primary-lightest: #bec3ee;
+
+  --ifm-background-color: #F7F8FA;
+  /* Off-white background for depth */
+  --ifm-background-surface-color: #FFFFFF;
+  /* Pure white for cards */
+  --ifm-text-color: #3E4C59;
+  /* Soft dark gray */
+  --ifm-heading-color: #1F2933;
+  /* Darker gray for headings */
+
+  --border-color: #E4E7EB;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.06);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+}
+
+/* Dark Mode - Deep & Smooth */
+[data-theme='dark'] {
+  --ifm-color-primary: #8E97E0;
+  /* Lighter Indigo */
+  --ifm-color-primary-dark: #7e88db;
+  --ifm-color-primary-darker: #5E6AD2;
+  --ifm-color-primary-darkest: #4b55a8;
+  --ifm-color-primary-light: #aeb5e9;
+  --ifm-color-primary-lighter: #bec3ee;
+  --ifm-color-primary-lightest: #eff1fa;
+
+  --ifm-background-color: #141416;
+  /* Soft Black */
+  --ifm-background-surface-color: #1F2125;
+  /* Dark Gray Surface */
+  --ifm-text-color: #E4E7EB;
+  --ifm-heading-color: #FFFFFF;
+
+  --border-color: #2D3136;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Global Resets */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--ifm-background-color);
+}
+
+/* Navbar - Floating Pill */
+.navbar {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-sm);
+  height: 60px;
+  margin: 1rem auto;
+  max-width: 1200px;
+  border-radius: var(--radius-pill);
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+  width: calc(100% - 2rem);
+  /* Ensure it doesn't touch edges on small screens */
+}
+
+@media (max-width: 996px) {
+  .navbar {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    top: 0;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    /* Keep blur active on mobile */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .navbar__items--right {
+    display: flex;
+    /* Ensure hamburger menu is visible */
+  }
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(31, 33, 37, 0.8);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.navbar__inner {
+  padding: 0 1rem;
+}
+
+.navbar__brand {
+  margin-right: 2rem;
+}
+
+.navbar__item {
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navbar__item:hover,
+.navbar__link--active {
+  background-color: rgba(94, 106, 210, 0.1);
+  color: var(--ifm-color-primary);
+}
+
+/* Search Bar - Integrated Pill */
+.navbar__search-component {
+  margin-left: auto;
+}
+
+@media (min-width: 997px) {
+  .navbar__items--right {
+    /* Create space for the centered search */
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .navbar__search-component {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 320px;
+    /* Slightly smaller for better proportion */
+    pointer-events: none;
+    /* Allow clicks to pass through wrapper */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .DocSearch-Button {
+    pointer-events: auto;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Align text/icon to left like a real input */
+    padding: 0 12px;
+  }
+}
+
+.DocSearch-Button {
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.04);
+  /* Slightly darker for visibility */
+  border: 1px solid transparent;
+  height: 36px;
+  margin: 0;
+  transition: all 0.2s ease;
+}
+
+.DocSearch-Button:hover {
+  background: rgba(0, 0, 0, 0.06);
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.DocSearch-Button-Placeholder {
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.DocSearch-Search-Icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+[data-theme='dark'] .DocSearch-Button {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .DocSearch-Button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Search Improvements - Ultra Aggressive */
+@media (max-width: 996px) {
+  .navbar__items--right {
+    flex: 1 !important;
+    justify-content: flex-end !important;
+    gap: 0.5rem !important;
+  }
+
+  .navbar__search-component {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 0 0.5rem !important;
+    flex: 1 !important;
+    flex-grow: 1 !important;
+  }
+
+  /* Maximum specificity for search button */
+  .navbar__search-component button.DocSearch-Button,
+  .navbar .navbar__search-component button,
+  .DocSearch-Button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    min-width: 180px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    margin: 0 !important;
+    padding: 0 14px !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 22px !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Force the icon to be visible */
+  .navbar__search-component .DocSearch-Search-Icon,
+  .DocSearch-Button .DocSearch-Search-Icon,
+  .navbar__search-component svg {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
+    color: var(--ifm-color-primary) !important;
+    opacity: 0.7 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Force placeholder to show */
+  .navbar__search-component .DocSearch-Button-Placeholder,
+  .DocSearch-Button .DocSearch-Button-Placeholder {
+    display: inline-block !important;
+    visibility: visible !important;
+    font-size: 0.9rem !important;
+    color: var(--ifm-text-color) !important;
+    opacity: 0.5 !important;
+    margin-left: 8px !important;
+  }
+
+  /* Dark mode */
+  [data-theme='dark'] .navbar__search-component button.DocSearch-Button,
+  [data-theme='dark'] .navbar .navbar__search-component button,
+  [data-theme='dark'] .DocSearch-Button {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+/* Mobile Menu Visibility Fixes */
+.navbar-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 80vw !important;
+  max-width: 300px !important;
+  height: 100vh !important;
+  background-color: var(--ifm-background-surface-color) !important;
+  box-shadow: var(--shadow-lg) !important;
+  z-index: 10000 !important;
+  /* Let Docusaurus handle transform/display if possible, but ensure z-index and background are set */
+}
+
+.navbar-sidebar__backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  z-index: 9999 !important;
+}
+
+.navbar-sidebar__item {
+  padding: 0.5rem 1rem;
+}
+
+.navbar-sidebar .menu__link {
+  color: var(--ifm-text-color) !important;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.navbar-sidebar .menu__link--active {
+  color: var(--ifm-color-primary) !important;
+  background: rgba(94, 106, 210, 0.1);
+}
+
+/* Ensure the toggle button is visible and clickable */
+.navbar__toggle {
+  color: var(--ifm-text-color);
+  margin-right: 0.5rem;
+  z-index: 101;
+  /* Above navbar background */
+  position: relative;
+}
+
+/* Cards & Surfaces */
+.card,
+.portal-card {
+  background: var(--ifm-background-surface-color);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+.card:hover,
+.portal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--ifm-color-primary-light);
+}
+
+/* Buttons - Soft & Rounded */
+.button {
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.button--primary {
+  background: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px rgba(94, 106, 210, 0.3);
+}
+
+.button--primary:hover {
+  background: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.button--secondary {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--border-color);
+  color: var(--ifm-text-color);
+}
+
+.button--secondary:hover {
+  background: var(--ifm-background-color);
+  border-color: var(--ifm-text-color);
+}
+
+/* Hero Section - Airy */
+.hero-soft {
+  padding: 8rem 0 6rem;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, rgba(94, 106, 210, 0.15) 0%, transparent 50%);
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--ifm-heading-color) 0%, var(--ifm-text-color) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  color: var(--ifm-text-color);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  opacity: 0.9;
+}
+
+/* Documentation Layout */
+.theme-doc-sidebar-container {
+  border-right: none !important;
+  background: transparent;
+}
+
+.menu__list-item {
+  margin-bottom: 4px;
+}
+
+.menu__link {
+  border-radius: var(--radius-sm);
+  color: var(--ifm-text-color);
+}
+
+.menu__link--active {
+  background-color: rgba(94, 106, 210, 0.1);
+  color: var(--ifm-color-primary);
+}
+
+/* Footer - Minimal */
+.footer {
+  background: transparent;
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
+  padding: 3rem 0;
+}
+
+.footer__title {
+  color: var(--ifm-heading-color);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer__link-item {
+  color: var(--ifm-text-color);
+  opacity: 0.8;
+}
+
+.footer__link-item:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: var(--ifm-color-primary);
+}
