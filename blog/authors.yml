@@ -15,11 +15,8 @@ rhythmcreative:
   title: Tech Documentalist
   url: https://github.com/rhythmcreative
   image_url: https://github.com/rhythmcreative.png
-  page:
-    # customize the url of the author page at /blog/authors/<permalink>
-    permalink: '/all-sebastien-lorber-articles'
   socials:
-    x: sebastienlorber
+    github: rhythmcreative
 
 slorber:
   name: Sébastien Lorber
