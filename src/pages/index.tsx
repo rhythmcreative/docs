@@ -69,7 +69,7 @@ function FeatureCards() {
             <p className="margin-bottom--md text--secondary">
               Análisis y recomendaciones para tu homelab y setup.
             </p>
-            <Link to="https://github.com/facebook/docusaurus" className="button button--secondary button--sm">
+            <Link to="https://github.com/rhythmcreative/docs" className="button button--secondary button--sm">
               Ver Hardware
             </Link>
           </div>
